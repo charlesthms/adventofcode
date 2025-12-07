@@ -4,10 +4,9 @@ package adventofcode.cth.day3;
 import adventofcode.cth.utils.InputReader;
 import adventofcode.cth.utils.Solver;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Day3 implements Solver<Integer> {
+public class Day3 implements Solver<Long, Long> {
 
     private final String[] input;
 
@@ -23,24 +22,49 @@ public class Day3 implements Solver<Integer> {
         return result;
     }
 
+    public long kCombinations(final List<Integer> arr, final int k) {
+        int n = arr.size();
+        int toRemove = n - k;
+        final Deque<Integer> stack = new ArrayDeque<>();
+
+        for (int digit : arr) {
+            while (!stack.isEmpty() && toRemove > 0 && stack.peekLast() < digit) {
+                stack.removeLast();
+                toRemove--;
+            }
+            stack.addLast(digit);
+        }
+
+        while (stack.size() > k) {
+            stack.removeLast();
+        }
+
+        long number = 0;
+        for (int d : stack) {
+            number = number * 10 + d;
+        }
+        return number;
+    }
+
+
+
     @Override
-    public Integer solve() {
-        final List<Integer> results = new ArrayList<>();
+    public Long solvePart1() {
+        final List<Long> results = new ArrayList<>();
         for (final String line : input) {
             List<Integer> lineLst = toList(line);
-            int max = 0;
-            // Find all the pairs
-            for (int i = 0; i < lineLst.size() - 1; i++) {
-                for (int j = i + 1; j < lineLst.size(); j++) {
-                    int localMax = lineLst.get(i) * 10 + lineLst.get(j);
-                    if (localMax > max) {
-                        max = localMax;
-                    }
-                }
-            }
-
-            results.add(max);
+            results.add(kCombinations(lineLst, 2));
         }
-        return results.stream().reduce(0, Integer::sum);
+        return results.stream().reduce((long) 0, Long::sum);
+    }
+
+    @Override
+    public Long solvePart2() {
+        final List<Long> results = new ArrayList<>();
+        for (final String line : input) {
+            List<Integer> lineLst = toList(line);
+            results.add(kCombinations(lineLst, 12));
+        }
+        return results.stream().reduce((long) 0, Long::sum);
     }
 }

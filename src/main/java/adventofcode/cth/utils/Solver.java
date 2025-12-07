@@ -1,7 +1,8 @@
 package adventofcode.cth.utils;
 
 
-public interface Solver<T> {
+public interface Solver<T, V> {
+    T solvePart1();
 
-    public T solve();
+    V solvePart2();
 }

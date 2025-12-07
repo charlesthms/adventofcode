@@ -7,7 +7,7 @@ import adventofcode.cth.utils.Solver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day2 implements Solver<Long> {
+public class Day2 implements Solver<Long, Long> {
 
     private final List<List<Long>> expandedIds = new ArrayList<>();
     private final String[] input;
@@ -37,7 +37,6 @@ public class Day2 implements Solver<Long> {
                 return false;
             }
         }
-
 
         return true;
 
@@ -69,7 +68,7 @@ public class Day2 implements Solver<Long> {
     }
 
     @Override
-    public Long solve() {
+    public Long solvePart1() {
         final List<Long> invalidIds = new ArrayList<>();
 
         expandIds();
@@ -79,5 +78,10 @@ public class Day2 implements Solver<Long> {
         final long answer = invalidIds.stream().mapToLong(Long::longValue).sum();
 
         return answer;
+    }
+
+    @Override
+    public Long solvePart2() {
+        return 0L;
     }
 }

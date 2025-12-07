@@ -9,7 +9,7 @@ import lombok.Data;
  * Solver for Day 1 challenge.
  * <a href="https://adventofcode.com/2024/day/1">Read</a>
  */
-public class Day1 implements Solver<Integer> {
+public class Day1 implements Solver<Integer, Integer> {
 
     private final String[] input;
 
@@ -58,7 +58,12 @@ public class Day1 implements Solver<Integer> {
 
 
     @Override
-    public Integer solve() {
+    public Integer solvePart1() {
+        return 0;
+    }
+
+    @Override
+    public Integer solvePart2() {
         final TurnResult result = new TurnResult(50, 0);
         int step;
 
