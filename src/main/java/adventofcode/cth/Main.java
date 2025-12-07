@@ -3,6 +3,7 @@ package adventofcode.cth;
 import adventofcode.cth.day1.Day1;
 import adventofcode.cth.day2.Day2;
 import adventofcode.cth.day3.Day3;
+import adventofcode.cth.day4.Day4;
 import adventofcode.cth.utils.Solver;
 
 public class Main {
@@ -11,12 +12,13 @@ public class Main {
         Solver<?, ?> solver;
 
         // Change the day number to run different day's solution
-        int dayNumber = 3;
+        int dayNumber = 4;
 
         switch (dayNumber) {
             case 1 -> solver = new Day1();
             case 2 -> solver = new Day2();
             case 3 -> solver = new Day3();
+            case 4 -> solver = new Day4();
             default -> throw new IllegalArgumentException("Invalid day number: " + dayNumber);
         }
 
