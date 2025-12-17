@@ -6,6 +6,7 @@ import adventofcode.cth.day3.Day3;
 import adventofcode.cth.day4.Day4;
 import adventofcode.cth.day5.Day5;
 import adventofcode.cth.day6.Day6;
+import adventofcode.cth.day7.Day7;
 import adventofcode.cth.utils.Solver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +44,7 @@ public class Main {
 
     public static void main(String[] args) {
         final Solver<?, ?> solver;
-        final int dayNumber = 6;
+        final int dayNumber = 7;
 
         switch (dayNumber) {
             case 1 -> solver = new Day1();
@@ -52,6 +53,7 @@ public class Main {
             case 4 -> solver = new Day4();
             case 5 -> solver = new Day5();
             case 6 -> solver = new Day6();
+            case 7 -> solver = new Day7();
             default -> throw new IllegalArgumentException("Invalid day number: " + dayNumber);
         }
 
